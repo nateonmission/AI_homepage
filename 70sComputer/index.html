@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nathan Allen - Python Backend Developer Portfolio. Junior to Mid-level Python developer with production experience in FastAPI, SQL, and AWS.">
+    <meta name="keywords" content="Python Developer, Backend Developer, FastAPI, SQL, AWS, Nathan Allen">
+    <title>Nathan Allen - Python Backend Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <a href="#top" class="logo" aria-label="Return to top of page">
+                <span class="logo-text">JNA</span>
+            </a>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="scrollToSection('experience')" aria-label="Go to experience section">Experience</button>
+                <button class="nav-btn" onclick="scrollToSection('job-match')" aria-label="Go to job match section">Job Match</button>
+                <button class="nav-btn" onclick="openAIPopup()" aria-label="Ask an AI about Nathan">Ask an AI</button>
+                <a href="https://github.com/nateonmission" target="_blank" rel="noopener noreferrer" class="nav-btn" aria-label="Visit GitHub profile">GitHub</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="top" role="main">
+        <!-- Landing Section -->
+        <section class="landing" id="landing">
+            <div class="landing-content">
+                <h1 class="main-title">JEROME NATHAN ALLEN</h1>
+                <h2 class="subtitle">Python Backend Developer</h2>
+                <p class="professional-goal">Seeking a position as a <strong>Python Developer</strong></p>
+                <div class="key-terms">
+                    <span class="term">FastAPI</span>
+                    <span class="term">SQL</span>
+                    <span class="term">AWS</span>
+                    <span class="term">Postgres</span>
+                    <span class="term">Pytest</span>
+                    <span class="term">Production Experience</span>
+                </div>
+                <div class="ai-invitation">
+                    <button class="ai-invite-btn" onclick="openAIPopup()" aria-label="Ask an AI about Nathan">ASK AN AI ABOUT NATHAN</button>
+                </div>
+                <div class="scroll-invitation">
+                    <p class="scroll-text">▼ SCROLL FOR MORE INFORMATION ▼</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills" aria-labelledby="skills-heading">
+            <div class="container">
+                <h2 id="skills-heading" class="section-title">SKILLS</h2>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <h3 class="box-title">Languages</h3>
+                        <ul class="skill-list" id="languages-list"></ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="box-title">Backend Frameworks</h3>
+                        <ul class="skill-list" id="backend-list"></ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="box-title">Databases</h3>
+                        <ul class="skill-list" id="databases-list"></ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="box-title">Cloud & Tools</h3>
+                        <ul class="skill-list" id="cloud-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section" id="experience" aria-labelledby="experience-heading">
+            <div class="container">
+                <h2 id="experience-heading" class="section-title">PROFESSIONAL EXPERIENCE</h2>
+                <div class="experience-timeline" id="experience-timeline"></div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section" id="education" aria-labelledby="education-heading">
+            <div class="container">
+                <h2 id="education-heading" class="section-title">EDUCATION</h2>
+                <div class="education-timeline" id="education-timeline"></div>
+            </div>
+        </section>
+
+        <!-- Job Match Section -->
+        <section class="section" id="job-match" aria-labelledby="job-match-heading">
+            <div class="container">
+                <h2 id="job-match-heading" class="section-title">JOB MATCH ANALYSIS</h2>
+                <p class="section-description">Paste a job description below to see how well it matches my skills and goals.</p>
+                <div class="job-match-container">
+                    <textarea 
+                        id="job-description" 
+                        class="job-textarea" 
+                        placeholder="Paste job description here..."
+                        aria-label="Job description input"
+                        rows="10"
+                    ></textarea>
+                    <button class="analyze-btn" onclick="analyzeJobMatch()" aria-label="Analyze job match">ANALYZE MATCH</button>
+                    <div id="match-results" class="match-results" role="region" aria-live="polite"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-links">
+            <a href="https://github.com/nateonmission" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">GitHub</a>
+            <a href="https://linkedin.com/in/nateontechnology" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">LinkedIn</a>
+        </div>
+        <p class="copyright" id="copyright"></p>
+    </footer>
+
+    <!-- AI Popup Modal -->
+    <div id="ai-popup" class="popup-overlay" role="dialog" aria-labelledby="popup-title" aria-hidden="true">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 id="popup-title">ASK AN AI ABOUT NATHAN</h2>
+                <button class="close-btn" onclick="closeAIPopup()" aria-label="Close popup">×</button>
+            </div>
+            <div class="popup-body">
+                <div class="suggested-questions">
+                    <h3>Suggested Questions:</h3>
+                    <button class="suggested-btn" onclick="askQuestion('What is Nathan\'s professional background?')">What is Nathan's professional background?</button>
+                    <button class="suggested-btn" onclick="askQuestion('What are Nathan\'s core strengths?')">What are Nathan's core strengths?</button>
+                    <button class="suggested-btn" onclick="askQuestion('What technologies does Nathan work with?')">What technologies does Nathan work with?</button>
+                    <button class="suggested-btn" onclick="askQuestion('What is Nathan looking for in a role?')">What is Nathan looking for in a role?</button>
+                </div>
+                <div class="custom-question">
+                    <h3>Ask Your Own Question:</h3>
+                    <textarea 
+                        id="custom-question-input" 
+                        class="question-textarea" 
+                        placeholder="Type your question here..."
+                        aria-label="Custom question input"
+                        rows="3"
+                    ></textarea>
+                    <button class="ask-btn" onclick="askCustomQuestion()" aria-label="Submit question">ASK</button>
+                </div>
+                <div id="ai-response" class="ai-response" role="region" aria-live="polite"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
