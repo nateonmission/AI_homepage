@@ -32,7 +32,8 @@
         <!-- Landing Section -->
         <section class="landing" id="landing">
             <div class="landing-content">
-                <h1 class="main-title">JEROME NATHAN ALLEN</h1>
+                <div id="ascii-art-container" class="ascii-art-container"></div>
+                <h1 class="main-title" id="main-title" style="display: none;">JEROME NATHAN ALLEN</h1>
                 <h2 class="subtitle">Python Backend Developer</h2>
                 <p class="professional-goal">Seeking a position as a <strong>Python Developer</strong></p>
                 <div class="key-terms">
@@ -70,8 +71,16 @@
                         <ul class="skill-list" id="databases-list"></ul>
                     </div>
                     <div class="skill-box">
-                        <h3 class="box-title">Cloud & Tools</h3>
+                        <h3 class="box-title">Frontend Frameworks</h3>
+                        <ul class="skill-list" id="frontend-list"></ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="box-title">Cloud</h3>
                         <ul class="skill-list" id="cloud-list"></ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="box-title">Tools</h3>
+                        <ul class="skill-list" id="tools-list"></ul>
                     </div>
                 </div>
             </div>
@@ -81,7 +90,58 @@
         <section class="section" id="experience" aria-labelledby="experience-heading">
             <div class="container">
                 <h2 id="experience-heading" class="section-title">PROFESSIONAL EXPERIENCE</h2>
-                <div class="experience-timeline" id="experience-timeline"></div>
+                <div class="experience-timeline" id="experience-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">Allen Data Services</div>
+                                <div class="timeline-role">Owner / Technical Consultant</div>
+                            </div>
+                            <div class="timeline-period">2024–Present</div>
+                        </div>
+                        <div class="timeline-details">Provides IT support, web development, database support, and technical consulting for remote workers and small businesses.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">Directions Research (The Directions Group)</div>
+                                <div class="timeline-role">Developer</div>
+                            </div>
+                            <div class="timeline-period">2022–2024</div>
+                        </div>
+                        <div class="timeline-details">Migrated Jupyter workflows into FastAPI services, troubleshot Postgres and MS-SQL databases, supported AWS ETL pipelines, wrote Pytest test suites, documentation, and internal testing curriculum. Laid off due to reduction in force.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">Charter Communications</div>
+                                <div class="timeline-role">Technical Support Specialist (Residential & Business)</div>
+                            </div>
+                            <div class="timeline-period">2005–2021</div>
+                        </div>
+                        <div class="timeline-details">Supported business-class internet, networking, servers, email, proxies, and authored extensive troubleshooting documentation.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">HomeWorx Services</div>
+                                <div class="timeline-role">Sole Proprietor</div>
+                            </div>
+                            <div class="timeline-period">2003–2017</div>
+                        </div>
+                        <div class="timeline-details">Provided residential and small business IT support, networking, and basic web services.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">SciTel (ClientLogic)</div>
+                                <div class="timeline-role">Technical Support Specialist</div>
+                            </div>
+                            <div class="timeline-period">2001–2003</div>
+                        </div>
+                        <div class="timeline-details">Provided ADSL technical support for BellSouth internet customers.</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -89,7 +149,48 @@
         <section class="section" id="education" aria-labelledby="education-heading">
             <div class="container">
                 <h2 id="education-heading" class="section-title">EDUCATION</h2>
-                <div class="education-timeline" id="education-timeline"></div>
+                <div class="education-timeline" id="education-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">Code Louisville / General Assembly</div>
+                                <div class="timeline-role">Software Engineering Student</div>
+                            </div>
+                            <div class="timeline-period">2018–2022</div>
+                        </div>
+                        <div class="timeline-details">Studied frontend development, Python, Java, C#, and completed a full-time Java full-stack bootcamp.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">University of Louisville</div>
+                                <div class="timeline-role">Accounting Student</div>
+                            </div>
+                            <div class="timeline-period">2012–2017</div>
+                        </div>
+                        <div class="timeline-details">Bachelor's degree in Accounting (GPA 3.5).</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">The Southern Baptist Theological Seminary</div>
+                                <div class="timeline-role">Graduate Student</div>
+                            </div>
+                            <div class="timeline-period">2005–2011</div>
+                        </div>
+                        <div class="timeline-details">Master's degree with specialization in Christian Missions (GPA 3.3).</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-org">Middle Tennessee State University</div>
+                                <div class="timeline-role">Student / Computer Lab Assistant</div>
+                            </div>
+                            <div class="timeline-period">1995–2001</div>
+                        </div>
+                        <div class="timeline-details">Bachelor of Science in International Relations, French, and German (GPA 3.3). Worked in the Foreign Language Department Computer Lab assisting non-technical users.</div>
+                    </div>
+                </div>
             </div>
         </section>
 
