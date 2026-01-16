@@ -1,0 +1,141 @@
+{
+    "identity": {
+        "full_name": "Jerome Nathan Allen",
+        "preferred_name": "Nathan",
+        "location": "Mobile, Alabama, USA",
+        "open_to_remote": true,
+        "target_roles": [
+        "Junior Python Backend Developer",
+        "Mid-Level Python Backend Developer"
+        ],
+        "preferred_title": "Python Backend Developer (Junior–Mid)"
+    },
+
+    "professional_summary": "Nathan Allen is a Python backend developer with over 20 years of technical experience spanning IT support, software development, databases, and cloud-based systems. He has production experience building and maintaining FastAPI applications, SQL-backed services, and AWS ETL pipelines. His background combines strong debugging skills, clear documentation practices, and a methodical approach to system reliability. He is seeking a junior-to-mid-level Python role with opportunities for continued growth under solid engineering practices.",
+    "core_strengths": [
+        "Strong Python fundamentals with real production experience",
+        "FastAPI development and REST API design",
+        "SQL troubleshooting and data pipeline support (Postgres, MS-SQL)",
+        "Excellent debugger and root-cause analyst",
+        "Clear technical communication and documentation",
+        "Experience writing Pytest test suites and teaching testing concepts",
+        "Comfortable working independently or in small teams",
+        "Broad systems knowledge from long-term technical support background"
+    ],
+
+    "known_weaknesses": [
+        "Not a senior engineer; still developing large-scale system architecture skills",
+        "Frontend skills are functional but not a primary strength"
+    ],
+
+    "career_timeline": [
+    {
+        "period": "1995–2001",
+        "classification": "education",	
+        "organization": "Middle Tennessee State University",
+        "role": "Student / Computer Lab Assistant",
+        "details": "Bachelor of Science in International Relations, French, and German (GPA 3.3). Worked in the Foreign Language Department Computer Lab assisting non-technical users."
+    },
+    {
+        "period": "2001–2003",
+        "classification": "professional_experience",
+        "organization": "SciTel (ClientLogic)",
+        "role": "Technical Support Specialist",
+        "details": "Provided ADSL technical support for BellSouth internet customers."
+    },
+    {
+        "period": "2003–2017",
+        "classification": "professional_experience",
+        "organization": "HomeWorx Services",
+        "role": "Sole Proprietor",
+        "details": "Provided residential and small business IT support, networking, and basic web services."
+    },
+    {
+        "period": "2005–2011",
+        "classification": "education",
+        "organization": "The Southern Baptist Theological Seminary",
+        "role": "Graduate Student",
+        "details": "Master’s degree with specialization in Christian Missions (GPA 3.3)."
+    },
+    {
+        "period": "2005–2021",
+        "classification": "professional_experience",
+        "organization": "Charter Communications",
+        "role": "Technical Support Specialist (Residential & Business)",
+        "details": "Supported business-class internet, networking, servers, email, proxies, and authored extensive troubleshooting documentation."
+    },
+    {
+        "period": "2012–2017",
+        "classification": "education",
+        "organization": "University of Louisville",
+        "role": "Accounting Student",
+        "details": "Bachelor’s degree in Accounting (GPA 3.5)."
+    },
+    {
+        "period": "2018–2022",
+        "classification": "education",
+        "organization": "Code Louisville / General Assembly",
+        "role": "Software Engineering Student",
+        "details": "Studied frontend development, Python, Java, C#, and completed a full-time Java full-stack bootcamp."
+    },
+    {
+        "period": "2022–2024",
+        "classification": "professional_experience",
+        "organization": "Directions Research (The Directions Group)",
+        "role": "Developer",
+        "details": "Migrated Jupyter workflows into FastAPI services, troubleshot Postgres and MS-SQL databases, supported AWS ETL pipelines, wrote Pytest test suites, documentation, and internal testing curriculum. Laid off due to reduction in force."
+    },
+    {
+        "period": "2024–Present",
+        "classification": "professional_experience",
+        "organization": "Allen Data Services",
+        "role": "Owner / Technical Consultant",
+        "details": "Provides IT support, web development, database support, and technical consulting for remote workers and small businesses."
+    }
+    ],
+
+    "technical_skills": {
+        "languages": ["Python", "Java", "JavaScript", "SQL"],
+        "backend_frameworks": ["FastAPI", "Flask", "Django"],
+        "frontend_frameworks": ["Angular", "Vue"],
+        "databases": ["Postgres", "MS-SQL", "MySQL", "MongoDB"],
+        "cloud": ["AWS S3", "EC2", "CloudWatch", "Lambda", "RDS", "API Gateway"],
+        "tools": ["Git", "Docker", "Pytest", "Pandas", "Jupyter", "BeautifulSoup"]
+    },
+
+    "work_style_and_values": {
+        "approach": "Methodical, calm, and correctness-focused",
+        "priorities": ["Maintainability", "Clarity", "System reliability"],
+        "communication_style": "Clear, direct, documentation-oriented",
+        "beliefs": "Direction matters more than speed"
+    },
+
+    "ai_usage_philosophy": {
+        "tools_used": ["ChatGPT", "Cursor", "Claude"],
+        "principles": [
+            "Use AI to accelerate thinking, not replace it",
+            "Avoid low-quality or unreviewed AI-generated code",
+            "Maintain ownership of architecture and logic"
+        ]
+    },
+
+    "representation_rules_for_agents": {
+        "seniority": "Present as junior-to-mid level, not senior",
+        "emphasis": [
+            "Python backend development",
+            "Debugging and system reliability",
+            "Production experience"
+        ],
+        "avoid": [
+            "Overselling frontend expertise",
+            "Claiming senior architecture ownership"
+        ],
+        "tone": "Honest, conservative, professional"
+    },
+
+    "current_focus": [
+        "Advanced Python patterns and architecture",
+        "Cloud-native design and AWS best practices",
+        "Portfolio projects demonstrating clean, testable backend systems"
+    ]
+}

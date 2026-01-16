@@ -1,8 +1,60 @@
 // Global data storage
 let lifeData = null;
 
+// ASCII Art for name - Terminal style
+const ASCII_ART = `
+███╗   ██╗ █████╗ ████████╗██╗  ██╗ █████╗ ███╗   ██╗
+████╗  ██║██╔══██╗╚══██╔══╝██║  ██║██╔══██╗████╗  ██║
+██╔██╗ ██║███████║   ██║   ███████║███████║██╔██╗ ██║
+██║╚██╗██║██╔══██║   ██║   ██╔══██║██╔══██║██║╚██╗██║
+██║ ╚████║██║  ██║   ██║   ██║  ██║██║  ██║██║ ╚████║
+╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+                                                      
+ █████╗ ██╗     ██╗     ███████╗███╗   ██╗
+██╔══██╗██║     ██║     ██╔════╝████╗  ██║
+███████║██║     ██║     █████╗  ██╔██╗ ██║
+██╔══██║██║     ██║     ██╔══╝  ██║╚██╗██║
+██║  ██║███████╗███████╗███████╗██║ ╚████║
+╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═══╝
+`;
+
+// Animate ASCII art
+function animateASCIIArt() {
+    const container = document.getElementById('ascii-art-container');
+    if (!container) return;
+    
+    const lines = ASCII_ART.trim().split('\n');
+    let currentLine = 0;
+    
+    function showNextLine() {
+        if (currentLine < lines.length) {
+            const lineDiv = document.createElement('div');
+            lineDiv.className = 'ascii-line';
+            lineDiv.textContent = lines[currentLine];
+            lineDiv.style.animationDelay = `${currentLine * 0.05}s`;
+            container.appendChild(lineDiv);
+            currentLine++;
+            setTimeout(showNextLine, 50);
+        } else {
+            // After animation, optionally show the regular title
+            setTimeout(() => {
+                const mainTitle = document.getElementById('main-title');
+                if (mainTitle) {
+                    mainTitle.style.display = 'block';
+                    mainTitle.style.animation = 'fadeIn 0.5s ease-in';
+                }
+            }, 500);
+        }
+    }
+    
+    showNextLine();
+}
+
 // Load life data on page load
 document.addEventListener('DOMContentLoaded', async () => {
+    // Start ASCII art animation
+    animateASCIIArt();
+    
     await loadLifeData();
     populatePage();
     updateCopyright();
@@ -19,16 +71,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 });
 
-// Load my_life.json data
+// Load life data from my_life.json file
 async function loadLifeData() {
     try {
         const response = await fetch('my_life.json');
         if (!response.ok) {
-            throw new Error('Failed to load life data');
+            throw new Error(`Failed to load life data: ${response.status} ${response.statusText}`);
         }
         lifeData = await response.json();
+        console.log('Life data loaded successfully:', {
+            hasSkills: !!lifeData.technical_skills,
+            hasTimeline: !!lifeData.career_timeline,
+            timelineLength: lifeData.career_timeline?.length || 0,
+            skillsCount: Object.keys(lifeData.technical_skills || {}).length
+        });
     } catch (error) {
         console.error('Error loading life data:', error);
+        alert('Error loading resume data. Please ensure my_life.json is in the same directory and served from a web server (not file://).\n\nError: ' + error.message);
         // Fallback data structure
         lifeData = {
             technical_skills: {},
@@ -49,9 +108,13 @@ function populatePage() {
 
 // Populate skills section
 function populateSkills() {
-    if (!lifeData.technical_skills) return;
+    if (!lifeData.technical_skills) {
+        console.error('No technical_skills data available');
+        return;
+    }
     
     const skills = lifeData.technical_skills;
+    console.log('Populating skills from data:', skills);
     
     // Languages
     const languagesList = document.getElementById('languages-list');
@@ -83,31 +146,85 @@ function populateSkills() {
         });
     }
     
-    // Cloud and tools combined
+    // Frontend frameworks
+    const frontendList = document.getElementById('frontend-list');
+    if (frontendList && skills.frontend_frameworks) {
+        skills.frontend_frameworks.forEach(framework => {
+            const li = document.createElement('li');
+            li.textContent = framework;
+            frontendList.appendChild(li);
+        });
+    }
+    
+    // Cloud
     const cloudList = document.getElementById('cloud-list');
-    if (cloudList) {
-        const allItems = [];
-        if (skills.cloud) allItems.push(...skills.cloud);
-        if (skills.tools) allItems.push(...skills.tools);
-        allItems.forEach(item => {
+    if (cloudList && skills.cloud) {
+        skills.cloud.forEach(item => {
             const li = document.createElement('li');
             li.textContent = item;
             cloudList.appendChild(li);
         });
     }
+    
+    // Tools
+    const toolsList = document.getElementById('tools-list');
+    if (toolsList && skills.tools) {
+        skills.tools.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            toolsList.appendChild(li);
+        });
+    }
+    
+    // Log what was populated
+    const totalSkills = (skills.languages?.length || 0) + 
+                       (skills.backend_frameworks?.length || 0) + 
+                       (skills.frontend_frameworks?.length || 0) + 
+                       (skills.databases?.length || 0) + 
+                       (skills.cloud?.length || 0) + 
+                       (skills.tools?.length || 0);
+    console.log(`Populated ${totalSkills} total skills across all categories`);
 }
 
-// Populate experience section
+// Populate experience section (skipped - now hardcoded in HTML)
 function populateExperience() {
-    if (!lifeData.career_timeline) return;
-    
     const timeline = document.getElementById('experience-timeline');
-    if (!timeline) return;
+    if (!timeline) {
+        console.error('Experience timeline element not found');
+        return;
+    }
     
-    // Filter for professional experience (exclude pure education)
+    // Check if content is already hardcoded
+    if (timeline.children.length > 0) {
+        console.log('Experience section already has hardcoded content, skipping population');
+        return;
+    }
+    
+    // Fallback: populate from data if not hardcoded
+    if (!lifeData || !lifeData.career_timeline) {
+        console.error('No career_timeline data available');
+        return;
+    }
+    
+    // Filter for professional experience using classification field
     const experience = lifeData.career_timeline.filter(item => {
-        const role = item.role.toLowerCase();
-        return !role.includes('student') || role.includes('assistant');
+        return item.classification === 'professional_experience';
+    });
+    
+    if (experience.length === 0) {
+        timeline.innerHTML = '<p class="no-data">No experience data available.</p>';
+        console.warn('No experience entries found after filtering');
+        return;
+    }
+    
+    // Sort by period (most recent first) - parse the period to sort properly
+    experience.sort((a, b) => {
+        // Extract start year for sorting
+        const getStartYear = (period) => {
+            const match = period.match(/(\d{4})/);
+            return match ? parseInt(match[1]) : 0;
+        };
+        return getStartYear(b.period) - getStartYear(a.period);
     });
     
     experience.forEach(item => {
@@ -125,19 +242,48 @@ function populateExperience() {
         `;
         timeline.appendChild(div);
     });
+    
+    console.log(`Populated ${experience.length} experience entries`);
 }
 
-// Populate education section
+// Populate education section (skipped - now hardcoded in HTML)
 function populateEducation() {
-    if (!lifeData.career_timeline) return;
-    
     const timeline = document.getElementById('education-timeline');
-    if (!timeline) return;
+    if (!timeline) {
+        console.error('Education timeline element not found');
+        return;
+    }
     
-    // Filter for education
+    // Check if content is already hardcoded
+    if (timeline.children.length > 0) {
+        console.log('Education section already has hardcoded content, skipping population');
+        return;
+    }
+    
+    // Fallback: populate from data if not hardcoded
+    if (!lifeData || !lifeData.career_timeline) {
+        console.error('No career_timeline data available');
+        return;
+    }
+    
+    // Filter for education using classification field
     const education = lifeData.career_timeline.filter(item => {
-        const role = item.role.toLowerCase();
-        return role.includes('student') && !role.includes('assistant');
+        return item.classification === 'education';
+    });
+    
+    if (education.length === 0) {
+        timeline.innerHTML = '<p class="no-data">No education data available.</p>';
+        console.warn('No education entries found after filtering');
+        return;
+    }
+    
+    // Sort by period (most recent first)
+    education.sort((a, b) => {
+        const getStartYear = (period) => {
+            const match = period.match(/(\d{4})/);
+            return match ? parseInt(match[1]) : 0;
+        };
+        return getStartYear(b.period) - getStartYear(a.period);
     });
     
     education.forEach(item => {
@@ -155,6 +301,8 @@ function populateEducation() {
         `;
         timeline.appendChild(div);
     });
+    
+    console.log(`Populated ${education.length} education entries`);
 }
 
 // Scroll to section

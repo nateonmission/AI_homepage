@@ -103,6 +103,30 @@ body {
     max-width: 800px;
 }
 
+.ascii-art-container {
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--fg-bright-green);
+    text-shadow: 0 0 5px var(--shadow-green);
+    white-space: pre;
+    overflow: hidden;
+}
+
+.ascii-art-container .ascii-line {
+    display: block;
+    opacity: 0;
+    animation: typeIn 0.1s forwards;
+}
+
+@keyframes typeIn {
+    to {
+        opacity: 1;
+    }
+}
+
 .main-title {
     font-size: 32px;
     margin-bottom: 20px;
@@ -116,6 +140,15 @@ body {
     }
     to {
         text-shadow: 3px 3px 0px var(--bg-dark-green), 0 0 20px var(--fg-bright-green);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 
@@ -298,6 +331,13 @@ body {
     font-size: 9px;
     line-height: 1.8;
     margin-top: 10px;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    color: var(--fg-medium-green);
+    font-size: 10px;
 }
 
 /* Job Match Section */
@@ -607,6 +647,11 @@ body {
         padding: 15px 25px;
     }
 
+    .ascii-art-container {
+        font-size: 5px;
+        overflow-x: auto;
+    }
+
     .section-title {
         font-size: 16px;
     }
@@ -655,6 +700,10 @@ body {
     .ai-invite-btn {
         font-size: 8px;
         padding: 12px 20px;
+    }
+
+    .ascii-art-container {
+        font-size: 4px;
     }
 
     .key-terms {
